@@ -11,5 +11,6 @@ namespace autoload\app\controller;
 class index{
     public function index(){
         echo 111;
+        //var_dump($_REQUEST);
     }
 }

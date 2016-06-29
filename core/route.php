@@ -36,13 +36,14 @@ class route{
                     self::$method = $methodArr[0];
                     array_shift($methodArr) && self::$params = implode('?',$methodArr );
                 }
+            }else{
+                self::$method = $urlArr[1];
             }
-            self::$method = $urlArr[1];
         }
 
         $route = array();
         self::$controller && $route['c'] = self::$controller or die('no controller');
-        self::$method && $route['m'] = self::$method or die('no method');
+        self::$method && $route['m'] = self::$method or $route['m'] = 'index';
         self::$params && $route['p'] = self::$params;
         return $route;
     }
