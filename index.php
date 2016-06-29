@@ -12,5 +12,7 @@ $obj = new autoload();
 $realPath = realPath(dirname('./'));
 $obj->addNamespace('autoload', $realPath.DIRECTORY_SEPARATOR);
 $obj->register();
+
+autoload\core\core::import(['phpunit'=>'phpunit']);
 $url = autoload\core\route::getUrl();
 autoload\core\core::run($url);
