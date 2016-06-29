@@ -10,7 +10,8 @@ namespace autoload\app\controller;
 class controller{
     public function ceshi(){
         $redis = new \Redis();
-        $redis->connect('192.168.249.129',6379);
+        $res = $redis->connect('192.168.43.128',6379);
+        //var_dump($res);die;
         var_dump($redis->lrange('111',0,10));
         //$redis->lPush('111','sunx');
         var_dump($redis->llen('111'));
