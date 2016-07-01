@@ -7,10 +7,11 @@
  */
 
 namespace autoload\app\controller;
+use autoload\core\controller as A;
 
-class index{
+class index extends A{
     public function index(){
-        echo 111;
-        //var_dump($_REQUEST);
+        $this->view = array(1,2,4);
+        
     }
 }

@@ -69,7 +69,7 @@ class autoload{
 
     private function requireFile($file){
         if(file_exists($file)){
-            require("{$file}");
+            require $file;
             
         }else{
             return false;

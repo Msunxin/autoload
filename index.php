@@ -5,14 +5,22 @@
  * Date: 2016/4/27
  * Time: 17:22
  */
-include "core/route.php";
+define('APP_DIR',__DIR__);
+define('APP_DEBUG',FALSE);
 
-include('core/autoload.php');
+require "core/route.php";
+
+require 'core/autoload.php';
 $obj = new autoload();
 $realPath = realPath(dirname('./'));
 $obj->addNamespace('autoload', $realPath.DIRECTORY_SEPARATOR);
 $obj->register();
+use autoload\core as core;
 
-autoload\core\core::import(['phpunit'=>'phpunit']);
-$url = autoload\core\route::getUrl();
-autoload\core\core::run($url);
+core\core::errorLog();//错误日志
+
+core\core::import(['composer'=>'composer']);//引用第三方库
+
+$url = core\route::getUrl();
+//core\controller::$tem = $url['c'];
+core\core::run($url);

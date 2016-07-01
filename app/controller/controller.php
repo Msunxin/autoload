@@ -7,7 +7,8 @@
  */
 namespace autoload\app\controller;
 
-class controller{
+use autoload\core\controller AS A;
+class controller extends A{
     public function ceshi(){
         $redis = new \Redis();
         $res = $redis->connect('192.168.43.128',6379);

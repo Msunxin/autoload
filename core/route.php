@@ -26,18 +26,25 @@ class route{
             $urlArr = explode('/',self::$url);
             if($urlArr[0] == 'index.php') array_shift($urlArr);
             $num = count($urlArr);
-            self::$controller = $urlArr[0];
-            if(stripos($urlArr[$num-1],'?')){
-                $methodArr = explode('?',$urlArr[$num-1]);
-                if(count($methodArr) == 2){
-                    self::$method = $methodArr[0];
-                    self::$params = $methodArr[1];
+            if($num == 0)
+            {
+                self::$controller = 'index';
+                self::$method = 'index';
+            }else
+            {
+                self::$controller = $urlArr[0];
+                if(stripos($urlArr[$num-1],'?')){
+                    $methodArr = explode('?',$urlArr[$num-1]);
+                    if(count($methodArr) == 2){
+                        self::$method = $methodArr[0];
+                        self::$params = $methodArr[1];
+                    }else{
+                        self::$method = $methodArr[0];
+                        array_shift($methodArr) && self::$params = implode('?',$methodArr );
+                    }
                 }else{
-                    self::$method = $methodArr[0];
-                    array_shift($methodArr) && self::$params = implode('?',$methodArr );
+                    self::$method = $urlArr[1];
                 }
-            }else{
-                self::$method = $urlArr[1];
             }
         }
 
