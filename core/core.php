@@ -18,8 +18,9 @@ class core{
                 if(!$hasMethod){
                     throw new \Exception('this method is not define');
                 }else{
+                    $m -> before($url);
                     $m -> $url['m']();
-                    //\controller()::$tem = $url['c'];
+                    $m -> after();
                 }
             }catch (\Exception $e){
                 echo 'ERROR message :'.$e->getMessage()

@@ -22,5 +22,4 @@ core\core::errorLog();//错误日志
 core\core::import(['composer'=>'composer']);//引用第三方库
 
 $url = core\route::getUrl();
-//core\controller::$tem = $url['c'];
 core\core::run($url);

@@ -15,29 +15,39 @@ class controller{
     public $cache = '';
 
     public $view;
-    public static $tem = 'index.html';
+    public $display;
 
-    public function __construct()
+    protected $controller;
+    protected $method;
+
+    public function before($url)
     {
-        $this->_init();
+        $this->_init($url);
     }
 
-    public function __destruct()
+    public function after()
     {
         // TODO: Implement __destruct() method.
         $this->_after();
     }
 
-    private function _init(){
+    private function _init($url){
         $this->template = APP_DIR.'/app/skin';
         $this->cache = APP_DIR.'/cache';
+        $this->controller = $url['c'];
+        $this->method = $url['m'];
+
+        $this->display = $url['c'].'.html';
 
     }
 
     private function _after(){
         $tem = new \autoload\core\MySmarty($this->template, $this->cache);
         $smarty = $tem->Smarty_GuestBook();
-        $smarty->assign('view',$this->view);
-        $smarty->display(self::$tem);
+        foreach ($this->view as $k=>$v){
+            $smarty->assign($k,$v);
+        }
+
+        $smarty->display($this->display);
     }
 }

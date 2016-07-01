@@ -11,7 +11,8 @@ use autoload\core\controller as A;
 
 class index extends A{
     public function index(){
-        $this->view = array(1,2,4);
+        $this->view['view'] = array(1,2,4);
+        //$this->display = null;
         
     }
 }
