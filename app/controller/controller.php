@@ -16,4 +16,8 @@ class controller extends A{
         $result = $redis->lrange('111',0,10);
         $this->view['result'] = $result;
     }
+
+    public function index(){
+        echo 111;
+    }
 }

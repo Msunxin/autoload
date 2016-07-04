@@ -14,7 +14,7 @@ class controller{
     public $template = '';
     public $cache = '';
 
-    public $view;
+    public $view = array();
     public $display;
 
     protected $controller;
@@ -37,7 +37,7 @@ class controller{
         $this->controller = $url['c'];
         $this->method = $url['m'];
 
-        $this->display = $url['c'].'.html';
+        $this->display = $url['c'].DIRECTORY_SEPARATOR.$url['m'].'.html';
 
     }
 
