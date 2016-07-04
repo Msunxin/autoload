@@ -30,6 +30,10 @@ class route{
             {
                 self::$controller = 'index';
                 self::$method = 'index';
+            }elseif($num == 1)
+            {
+                self::$controller = $urlArr[0];
+                self::$method = 'index';
             }else
             {
                 self::$controller = $urlArr[0];

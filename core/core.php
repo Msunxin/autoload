@@ -8,6 +8,12 @@
 namespace autoload\core;
 class core{
 
+    public static function initApp(){
+        self::errorLog();//错误日志
+
+        self::import(['composer'=>'composer']);//引用第三方库
+    }
+
     public static function run($url){
         $name = "autoload\\app\\controller\\" . $url['c'] ;
         if(class_exists($name)){
@@ -16,11 +22,14 @@ class core{
             $m = new $name();
             try{
                 if(!$hasMethod){
-                    throw new \Exception('this method is not define');
+                    throw new \Exception('this method is not defined');
                 }else{
+//                    $beginTime = microtime(true);
                     $m -> before($url);
                     $m -> $url['m']();
                     $m -> after();
+//                    $endTime = microtime(true);
+//                    echo $endTime-$beginTime;
                 }
             }catch (\Exception $e){
                 echo 'ERROR message :'.$e->getMessage()
@@ -29,7 +38,7 @@ class core{
             }
 
         }else{
-            $ex = new \Exception('ERROR message: this controller is not define');
+            $ex = new \Exception('ERROR message: this controller is not defined');
             echo $ex->getMessage();
         }
 
@@ -54,5 +63,11 @@ class core{
         if(defined('APP_DIR') && !is_dir(APP_DIR.'\log')){
              mkdir(APP_DIR.'\log');
         }
+    }
+
+    public static function getConfig($choose='default'){
+        if(!defined('CONFIG')) return false;
+        $config = require CONFIG.DIRECTORY_SEPARATOR.'config.php';
+        return $config[$choose];
     }
 }
