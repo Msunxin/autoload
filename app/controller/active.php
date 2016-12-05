@@ -31,7 +31,7 @@ class active extends A{
                 if ($stomp->hasFrame()) {
                     $frame = $stomp->readFrame();
                     if ($frame != NULL) {
-                        print "Received: " . $frame->body . " - time now is " . date("Y-m-d H:i:s"). "<br>";
+                        print "Received: " . $frame->body . " - time now is  " . date("Y-m-d H:i:s"). "<br>";
                         $stomp->ack($frame);
                     }
 //       sleep(1);
