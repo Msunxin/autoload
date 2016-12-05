@@ -8,7 +8,6 @@
 
 
 namespace autoload\core;
-require_once './public/vendor/smarty/smarty/libs/Smarty.class.php';
 class mySmarty{
 
     public $template = '';
@@ -24,7 +23,7 @@ class mySmarty{
         // Class Constructor. These automatically get set with each new instance.
         //类构造函数.创建实例的时候自动配置
 
-        $smarty = new \smarty();
+        $smarty = new \Smarty();
 
         $smarty->template_dir = $this->template;
         $smarty->compile_dir = $this->cache.'/templates_c/';

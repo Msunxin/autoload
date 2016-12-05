@@ -5,6 +5,9 @@
     <title>index</title>
 </head>
 <body>
-        {$view|var_dump}
+        {foreach $view as $k=>$v}
+<p>{$v}</p>
+{/foreach}
+
 </body>
 </html>

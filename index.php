@@ -11,6 +11,7 @@ define('APP_DEBUG',FALSE);
 require "core/route.php";
 
 require 'core/autoload.php';
+require 'public/vendor/autoload.php';
 $obj = new autoload();
 $realPath = realPath(dirname('./'));
 $obj->addNamespace('autoload', $realPath.DIRECTORY_SEPARATOR);

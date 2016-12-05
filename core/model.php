@@ -9,5 +9,8 @@ namespace autoload\core;
 
 class model{
 
-    
+    public function __construct()
+    {
+
+    }
 }

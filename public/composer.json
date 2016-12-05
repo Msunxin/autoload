@@ -1,7 +1,9 @@
 {
+	"name": "Msunxin/framework",
 	"require": {
 		"phpunit/phpunit": "3.7.24 - 4",
-		"smarty/smarty": "~3.1"
+		"smarty/smarty": "~3.1",
+		"phpoffice/phpexcel": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
